@@ -726,12 +726,12 @@ Selects a virtualenv in the follow order:
                                                                            (alist-get 'environments_info json-output)))
                                                      ;; Try alternative structure with string keys
                                                      (alist-get "prefix"
-                                                                (alist-get "default"
+                                                                (alist-get "dev"  ;; we use dev for development
                                                                            (alist-get "environments_info" json-output))))))
                                       (if env-dir
                                           (expand-file-name env-dir)
                                         ;; If we can't find it in the JSON, fall back to the default location
-                                        (let ((default-env-path (expand-file-name ".pixi/envs/default"
+                                        (let ((default-env-path (expand-file-name ".pixi/envs/dev"
                                                                                   (file-name-directory (pet-pyproject-path)))))
                                           (if (file-directory-p default-env-path)
                                               default-env-path
